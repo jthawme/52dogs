@@ -120,3 +120,23 @@ document.getElementById('random-btn').addEventListener('click', e => {
 if (navigator.share) {
     document.getElementById('share-btn').style.display = 'block';
 }
+
+const ImageLoader = (src) => {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => resolve(img);
+      img.onerror = err => reject(err);
+      img.src = src;
+    })
+  };
+
+function loadSmallImages() {
+    const updater = (index) => {
+        if (index < dogs.length) {
+            ImageLoader(dogs[index].smallImg)
+                .then(() => updater(index + 1));
+        }
+    }
+    updater(0);
+}
+loadSmallImages();
