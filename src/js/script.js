@@ -10,6 +10,8 @@ let targetWeek = false;
 const daysWrapper = document.querySelector('.days');
 const monthsWrapper = document.querySelector('.months');
 
+const viewer = document.getElementById('viewer');
+
 function dateHandler(el, type) {
     el.addEventListener('click', e => {
         if (e.target.tagName == 'BUTTON') {
@@ -74,7 +76,6 @@ dateHandler(daysWrapper, 'day');
 dateHandler(monthsWrapper, 'months');
 
 function removeDatePicker() {
-    const viewer = document.getElementById('viewer');
     document.getElementById('date-picker').classList.add('hide');
     setTimeout(() => viewer.classList.remove('hide'), 500);
     setTimeout(() => {
