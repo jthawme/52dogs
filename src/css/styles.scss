@@ -1,0 +1,29 @@
+@import 'normalize.css';
+
+$padding: 20px;
+$fontSize: 16px;
+
+html,
+body {
+    font-size: $fontSize;
+    line-height: 1.5;
+
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+.actor {
+    transition: {
+        property: opacity, visibility;
+        duration: 0.5s;
+    }
+
+    &.hide {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@import 'parts/datePicker';
+@import 'parts/viewer';
+@import 'parts/about';

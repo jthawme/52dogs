@@ -1,0 +1,11 @@
+#about {
+    display: none;
+
+    padding: $padding;
+    
+    max-width: 400px;
+
+    &.appear {
+        display: block;
+    }
+}

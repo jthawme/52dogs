@@ -1,0 +1,131 @@
+#date-picker {
+    position: fixed;
+
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    background-color: white;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    .content {
+        display: grid;
+
+        grid-template-areas:
+            "title"
+            "days"
+            "months";
+        
+        grid-row-gap: $padding;
+        grid-column-gap: $padding * 2;
+
+        align-items: flex-start;
+
+        @media screen and (min-width: 768px) {
+            grid-template-areas:
+                "title title"
+                "days months";
+        }
+    }
+
+    h2, ul {
+        padding: 0;
+        margin: 0;
+    }
+
+    ul {
+        display: flex;
+
+        flex-wrap: wrap;
+
+        list-style: none;
+
+        &:hover button {
+            opacity: 0.5;
+        }
+
+        &:hover button:not([disabled]):hover {
+            opacity: 1;
+        }
+    }
+
+    h2 {
+        grid-area: title;
+
+        font-weight: bold;
+
+        font-size: $fontSize;
+
+        margin: $padding / 3;
+    }
+
+    .days {
+        grid-area: days;
+
+        width: 350px;
+
+        li {
+            flex: 0 0 calc(100% / 8);
+        }
+    }
+
+    .months {
+        grid-area: months;
+
+        width: 350px;
+
+        li {
+            flex: 0 0 calc(100% / 4);
+        }
+    }
+
+    button {
+        position: relative;
+
+        border: 0;
+        padding: $padding / 3;
+        margin: 0;
+        outline: 0;
+
+        background-color: transparent;
+
+        font-weight: bold;
+
+        line-height: 1;
+
+        cursor: pointer;
+
+        &:after {
+            display: none;
+
+            position: absolute;
+
+            top: 35%;
+            left: 0;
+
+            width: 100%;
+            height: 7px;
+
+            background: linear-gradient(to top, red, lighten(red, 10));
+
+            mix-blend-mode: multiply;
+            transform: skewX(25deg) rotate(-15deg) scaleX(1.2);
+
+            content: '';
+        }
+
+        &:not([disabled]):hover:after,
+        &:not([disabled]).active:after {
+            display: block;
+        }
+
+        &[disabled] {
+            opacity: 0.5;
+        }
+    }
+}
