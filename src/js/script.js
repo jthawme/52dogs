@@ -118,7 +118,7 @@ document.getElementById('random-btn').addEventListener('click', e => {
 });
 
 if (navigator.share) {
-    document.getElementById('share-btn').style.display = 'block';
+    document.getElementById('share-btn').style.display = 'inline-block';
 }
 
 const ImageLoader = (src) => {

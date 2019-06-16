@@ -33,9 +33,15 @@
         position: absolute;
 
         top: 0;
-        right: 0;
+        left: 0;
+
+        width: 100%;
 
         ul {
+            display: flex;
+
+            justify-content: center;
+
             list-style: none;
 
             padding: $padding / 2;
@@ -43,7 +49,7 @@
         }
 
         li {
-            margin-bottom: $padding / 2;
+            margin: 0 #{$padding / 2} $padding / 2;
 
             text-align: right;
         }
@@ -70,10 +76,21 @@
         }
 
         @media screen and (min-width: 568px) {
+            width: auto;
+
+            left: auto;
             top: 50%;
-            right: 0;
+            right: $padding;
 
             transform: translate3d(0, -50%, 0);
+
+            ul {
+                display: block;
+            }
+
+            li {
+                margin: 0 0 $padding / 2;
+            }
         }
     }
 }
