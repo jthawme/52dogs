@@ -6,6 +6,7 @@ const date = {
 };
 
 let targetWeek = false;
+let currDog = false;
 
 const daysWrapper = document.querySelector('.days');
 const monthsWrapper = document.querySelector('.months');
@@ -93,17 +94,24 @@ function getDog(images, index) {
 }
 
 function setViewer(dog, full) {
+    if (full) {
+        viewer.querySelector('#download-btn').href = dog.download;
+        viewer.querySelector('#download-btn').download = dog.label;
+    }
+
     viewer.querySelector('img').src = full ? dog.img : dog.smallImg;
     viewer.querySelector('figcaption').innerText = dog.label;
+
+    currDog = dog;
 }
 
 function roulette() {
     let total = 25;
     const updater = (index) => {
         const d = dogs[Math.floor(Math.random() * dogs.length)];
+        setViewer(d, false);
 
         if (index > 0) {
-            setViewer(d, false);
             setTimeout(() => updater(index - 1), (250 - ((250 / total) * index)));
         } else {
             setViewer(d, true);
@@ -120,6 +128,18 @@ document.getElementById('random-btn').addEventListener('click', e => {
 
 if (navigator.share) {
     document.getElementById('share-btn').style.display = 'inline-block';
+    document.getElementById('share-btn').addEventListener('click', e => {
+        e.preventDefault();
+        shareDog();
+    });
+}
+
+function shareDog() {
+    navigator.share({
+        title: document.title,
+        text: `I am ${currDog.label}. How about you?`,
+        url: window.location.origin
+    });
 }
 
 const ImageLoader = (src) => {

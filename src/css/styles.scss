@@ -27,3 +27,15 @@ body {
 @import 'parts/datePicker';
 @import 'parts/viewer';
 @import 'parts/about';
+
+#canvas {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    z-index: 150;
+
+    transform: scale(0.5);
+    transform-origin: top left;
+}
